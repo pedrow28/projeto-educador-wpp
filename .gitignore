@@ -1,0 +1,20 @@
+# Ambiente virtual
+venv/
+__pycache__/
+
+# Arquivos de configuração sensíveis
+.env
+*.sqlite3
+*.db
+
+# Logs e outras saídas temporárias
+*.log
+*.txt
+
+# Configurações de IDEs
+.idea/
+.vscode/
+
+# Arquivos do sistema
+.DS_Store
+```
