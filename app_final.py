@@ -6,6 +6,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough  # Im
 from dotenv import load_dotenv  # Importa o dotenv para carregar variáveis de ambiente do arquivo .env
 import os  # Módulo para interagir com o sistema operacional
 from twilio.rest import Client  # Importa o módulo Twilio para enviar mensagens via WhatsApp
+import pywhatkit as kit # Importa o módulo pywhatkit para enviar SMS via WhatsApp
 
 ## Configurações
 
@@ -161,22 +162,15 @@ def enviar_licao_por_whatsapp(licao):
     # Número de WhatsApp de destino
     
     
-    to_whatsapp_number = "whatsapp:+553184483183"  # Substitua pelo número de destino
+    to_whatsapp_number = "+553184483183"  # Substitua pelo número de destino
 
     # Mensagem a ser enviada
     message_body = licao
 
-    # Configurar cliente Twilio
-    client = Client(account_sid, auth_token)
-
-    # Enviar mensagem
-    message = client.messages.create(
-        body=message_body,
-        from_=twilio_whatsapp_number,
-        to=to_whatsapp_number
-    )
-
-    print(f"Mensagem enviada com SID: {message.sid}")
+    # enviar mensagem
+    kit.sendwhatmsg_instantly(to_whatsapp_number, message_body)
+    
+    
 
 # Executa a aplicação
 
